@@ -1,25 +1,20 @@
-import React from 'react';
-import { View, Text, Button } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import React from "react";
+import { Box, Button, useColorMode, Text } from "native-base";
 
-function SettingsScreen() {
-    const navigation = useNavigation();
+const SettingsScreen = () => {
+  const { colorMode, toggleColorMode } = useColorMode(); // Manejo del modo oscuro/claro
 
-    return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text>Settings Screen</Text>
-
-            <Button 
-                title="Go to Details"
-                onPress={() => navigation.navigate('Details')} 
-            />
-
-            <Button 
-                title="Go back"
-                onPress={() => navigation.goBack()} 
-            />
-        </View> 
-    );
-}
+  return (
+    <Box flex={1} alignItems="center" justifyContent="center" 
+      bg={colorMode === "dark" ? "gray.800" : "gray.200"} w="100%">
+      <Text fontSize="lg" color={colorMode === "dark" ? "white" : "black"}>
+        {colorMode === "dark" ? "Modo Oscuro" : "Modo Claro"}
+      </Text>
+      <Button mt={4} onPress={toggleColorMode}>
+        Cambiar Modo
+      </Button>
+    </Box>
+  );
+};
 
 export default SettingsScreen;
