@@ -12,6 +12,7 @@ import LoginScreen from "./src/screens/LoginScreen";
 import HomeScreen from "./src/screens/HomeScreen";
 import ConfigScreen from "./src/screens/ConfigScreen"; 
 import ConfigScreen2 from "./src/screens/ConfigScreen2";
+import FireBaseScreen from "./src/screens/FireBaseScreen";
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
@@ -56,6 +57,14 @@ function DrawerNavigator() {
         component={ConfigScreen2}
         options={{
           drawerLabel: "Configuración Extra2",
+          drawerIcon: ({ color, size }) => <Ionicons name="cog-outline" size={size} color={color} />, 
+        }}
+      />
+      <Drawer.Screen
+        name="FireBase"
+        component={FireBaseScreen}
+        options={{
+          drawerLabel: "FireBase",
           drawerIcon: ({ color, size }) => <Ionicons name="cog-outline" size={size} color={color} />, 
         }}
       />
